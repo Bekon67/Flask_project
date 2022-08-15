@@ -13,19 +13,19 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/about/')
-def about():
-    return render_template('about.html')
+@app.route('/form/')
+def form():
+    return render_template('form.html')
 
 
-@app.route('/products/')
-def products():
-    return render_template('products.html')
+# @app.route('/products/')
+# def products():
+#     return render_template('products.html')
 
 
-@app.route('/store/')
-def store():
-    return render_template('store.html')
+@app.route('/results/')
+def results():
+    return render_template('results.html')
 
 
 if __name__ == "__main__":
