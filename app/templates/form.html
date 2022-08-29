@@ -26,7 +26,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
-        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/index/">Start Bootstrap</a>
+        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/index/">Анализ вакансий</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
@@ -34,8 +34,8 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/index/">О проекте</a></li>
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/form/">Запрос</a></li>
-<!--                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/products/">Products</a></li>-->
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/results/">Результаты</a></li>
+                <!--                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/products/">Products</a></li>-->
+<!--                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/results/">Результаты</a></li>-->
             </ul>
         </div>
     </div>
@@ -49,36 +49,29 @@
                     <div class="bg-faded rounded p-5">
                         <h2 class="section-heading mb-4">
                             <span class="section-heading-upper">Вперед к работе мечты!</span>
+                            <br>
                             <span class="section-heading-lower">Введи параметры вакансии</span>
                         </h2>
-                        <!--                        <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee-->
-                        <!--                            sourced from artisan farmers in various regions of South and Central America. We are-->
-                        <!--                            dedicated to travelling the world, finding the best coffee, and bringing back to you here in-->
-                        <!--                            our cafe.</p>-->
-                        <!--                        <p class="mb-0">-->
-                        <!--                            We guarantee that you will fall in-->
-                        <!--                            <em>lust</em>-->
-                        <!--                            with our decadent blends the moment you walk inside until you finish your last sip. Join us-->
-                        <!--                            for your daily routine, an outing with friends, or simply just to enjoy some alone time.-->
-                        <!--                        </p>-->
-                        <p class="mb-3">
-                        <form action="results.html">
-                            <!--        input - поля для ввода данных или кнопки-->
-                            <!--        type - тип поля, value-его значение, placeholder-подсказка-->
-                            <input class='form-control' type="text" name="query_string" value="" placeholder="строка поиска">
+                        <form action="/results/#Results" method="post">
+                            <input class='form-control' type="text" name="vacancy" value=""
+                                   placeholder="Наименование вакансии" id="Forma">
                             <br>
+                            <label for="lp">Количество анализируемых страниц</label>
+                            <input class='form-control'
+                                   type="number"
+                                   name="limit_pages"
+                                   value="3" min="1" max="20"
+                                   id="lp">
                             <br>
-                            <!--        submit - кнопка-->
-                            <!--        select - выпадающий список-->
-                            <p><select class='form-control' name="where">
-                                <option value="all">Везде</option>
-                                <option value="company">В названии компании</option>
-                                <option selected value="name">В названии вакансии</option>
-                            </select></p>
-<!--                            <input type="submit" value="Искать вакансии">-->
-                        <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="#!">Искать вакансии</a></div>
+                            <label for="ls">Количество важнейших навыков</label>
+                            <input class='form-control'
+                                   type="number"
+                                   name="limit_skills"
+                                   value="5" min="1" max="10"
+                                   id="ls">
+                            <br>
+                            <input type="submit" value="Искать вакансию" class="btn btn-primary">
                         </form>
-                        </p>
                     </div>
                 </div>
             </div>

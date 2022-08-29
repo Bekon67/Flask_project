@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Business Casual - Start Bootstrap Theme</title>
+    <title>Парсер HH</title>
     <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
-        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/index/">Start Bootstrap</a>
+        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="/index/">Анализ вакансий</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
@@ -34,13 +34,13 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/index/">О проекте</a></li>
                 <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/form/">Запрос</a></li>
-<!--                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/products/">Products</a></li>-->
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/results/">Результаты</a></li>
+                <!--                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/products/">Products</a></li>-->
+<!--                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/results/">Результаты</a></li>-->
             </ul>
         </div>
     </div>
 </nav>
-<section class="page-section cta">
+<section class="page-section cta" id="Results">
     <div class="container">
         <div class="row">
             <div class="col-xl-9 mx-auto">
@@ -49,80 +49,72 @@
                         <span class="section-heading-upper">Мы что-то нашли...</span>
                         <span class="section-heading-lower">Результаты</span>
                     </h2>
-                    <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Sunday
-                            <span class="ms-auto">Closed</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Monday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Tuesday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Wednesday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Thursday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Friday
-                            <span class="ms-auto">7:00 AM to 8:00 PM</span>
-                        </li>
-                        <li class="list-unstyled-item list-hours-item d-flex">
-                            Saturday
-                            <span class="ms-auto">9:00 AM to 5:00 PM</span>
-                        </li>
-                    </ul>
+                    <h3 class="section-heading">Вакансия: {{ res['vacancy'] }}</h3>
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Номер</th>
+                                            <th scope="col">Название</th>
+                                            <th scope="col">Процент упоминаний</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in res['requirements'] %}
+                                            <tr>
+                                                <th scope="row">{{ loop.index }}</th>
+                                                <td>{{ item['name'].capitalize() }}</td>
+                                                <td>{{ item['percent'] }}%</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                     <p class="address mb-5">
                         <em>
-                            <strong>1116 Orchard Street</strong>
-                            <br/>
-                            Golden Valley, Minnesota
-                        </em>
+                            <strong>Уровень заработной платы</strong>
+                        </em> <br/>
                     </p>
-                    <p class="mb-0">
-                        <small><em>Call Anytime</em></small>
-                        <br/>
-                        (317) 585-8468
-                    </p>
+                    <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
+                        <li class="list-unstyled-item list-hours-item d-flex">
+                            Ср. нижняя граница:
+                            <span class="ms-auto">{{ res['salary_down'] }}руб.</span>
+                        </li>
+                        <li class="list-unstyled-item list-hours-item d-flex">
+                            Ср. верхняя граница:
+                            <span class="ms-auto">{{ res['salary_up'] }}руб.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="page-section about-heading">
-    <div class="container">
-        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="/static/assets/img/about.jpg" alt="..."/>
-        <div class="about-heading-content">
-            <div class="row">
-                <div class="col-xl-9 col-lg-10 mx-auto">
-                    <div class="bg-faded rounded p-5">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">Strong Coffee, Strong Roots</span>
-                            <span class="section-heading-lower">About Our Cafe</span>
-                        </h2>
-                        <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee
-                            sourced from artisan farmers in various regions of South and Central America. We are
-                            dedicated to travelling the world, finding the best coffee, and bringing back to you here in
-                            our cafe.</p>
-                        <p class="mb-0">
-                            We guarantee that you will fall in
-                            <em>lust</em>
-                            with our decadent blends the moment you walk inside until you finish your last sip. Join us
-                            for your daily routine, an outing with friends, or simply just to enjoy some alone time.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--<section class="page-section about-heading">-->
+<!--    <div class="container">-->
+<!--        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="/static/assets/img/about.jpg" alt="..."/>-->
+<!--        <div class="about-heading-content">-->
+<!--            <div class="row">-->
+<!--                <div class="col-xl-9 col-lg-10 mx-auto">-->
+<!--                    <div class="bg-faded rounded p-5">-->
+<!--                        <h2 class="section-heading mb-4">-->
+<!--                            <span class="section-heading-upper">Strong Coffee, Strong Roots</span>-->
+<!--                            <span class="section-heading-lower">About Our Cafe</span>-->
+<!--                        </h2>-->
+<!--                        <p>Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee-->
+<!--                            sourced from artisan farmers in various regions of South and Central America. We are-->
+<!--                            dedicated to travelling the world, finding the best coffee, and bringing back to you here in-->
+<!--                            our cafe.</p>-->
+<!--                        <p class="mb-0">-->
+<!--                            We guarantee that you will fall in-->
+<!--                            <em>lust</em>-->
+<!--                            with our decadent blends the moment you walk inside until you finish your last sip. Join us-->
+<!--                            for your daily routine, an outing with friends, or simply just to enjoy some alone time.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 <footer class="footer text-faded text-center py-5">
     <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2022</p></div>
 </footer>
