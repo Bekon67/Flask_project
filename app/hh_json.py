@@ -27,7 +27,7 @@ def parce(vacancy, limit_pages='3', limit_skills='5'):
         area = {}
     param_request = {'text': vacancy}
     answer = get(url=url, params=param_request).json()
-    pprint(answer)
+    # pprint(answer)
     count_pages = answer['pages']
     result = {'keywords': vacancy,
               'count': 0}
@@ -43,10 +43,13 @@ def parce(vacancy, limit_pages='3', limit_skills='5'):
             print(f"Обрабатывается страница {page}")
         p = {'text': vacancy,
              'page': page}
+        answer = get(url=url, params=p).json()
         count_on_page = len(answer['items'])
         result['count'] += count_on_page
         for res in answer['items']:
+            # print('$'*100)
             # pprint(res)
+            # print('#' * 100)
             skills_set = set()
             city_vac = res['area']['name']
             # добавление города из ответа на запрос, если его нет в файле.
@@ -56,7 +59,7 @@ def parce(vacancy, limit_pages='3', limit_skills='5'):
             res_full = get(res['url']).json()
             # pprint(res_full)
             # pprint(rate[res_full['salary']['currency']])
-            pprint(res_full['key_skills'])
+            # pprint(res_full['key_skills'])
             #  Обработка описания вакансии. Вытаскивание английских слов из описания вакансии
             #  предполагается, что это навыки для IT
             pp = res_full['description']

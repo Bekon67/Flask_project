@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 
 from hh_json import parce
 
-# from crud import add_row
+from crud import add_row
 
 app = Flask(__name__)
 
@@ -30,6 +30,7 @@ def results_post():
     print(data)
     data_all = {**data, **vacancies}
     print(data_all)
+    add_row(data_all)
     return render_template('results.html', res=data_all)
 
 

@@ -18,11 +18,13 @@ def salary_processing(res_full, res, sal, rate):
             k = 23.47
         else:
             k = float(rate[code].rate)
-        print(k, '*' * 100)
+        # print(k, res_full['salary']['from'], res_full['salary']['to'], '*' * 100)
         sal['from'].append(k * res_full['salary']['from']
                            if res['salary']['from'] else
                            k * res_full['salary']['to'])
+        # print(sum(sal['from']), sum(sal['from']) / len(sal['from']), sal['from'], )
         sal['to'].append(k * res_full['salary']['to']
                          if res['salary']['to'] else
                          k * res_full['salary']['from'])
+        # print(sum(sal['to']), sum(sal['to']) / len(sal['to']), sal['to'])
     return sal
